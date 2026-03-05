@@ -53,6 +53,12 @@ export default function AdmissionApplyPage() {
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+
+        if (!photoBase64) {
+            alert("Student's Photo is mandatory. Please upload a photo to continue.");
+            return;
+        }
+
         setIsSubmitting(true);
 
         try {
@@ -238,24 +244,24 @@ export default function AdmissionApplyPage() {
 
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <div className="md:col-span-2">
-                                    <label className="block mb-2 text-sm font-semibold text-slate-700 dark:text-slate-300">Name of the Student (With Initial)*</label>
+                                    <label className="block mb-2 text-sm font-semibold text-slate-700 dark:text-slate-300">Name of the Student (With Initial)<span className="font-bold text-red-500">*</span></label>
                                     <input name="studentName" value={formData.studentName} onChange={handleChange} className="w-full rounded-lg border border-primary/20 bg-background-light/50 dark:bg-background-dark/50 h-12 px-4 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all" placeholder="Enter full name" required type="text" />
                                 </div>
 
                                 <div className="flex flex-col">
-                                    <label className="block mb-2 text-sm font-semibold text-slate-700 dark:text-slate-300">Date of Birth*</label>
+                                    <label className="block mb-2 text-sm font-semibold text-slate-700 dark:text-slate-300">Date of Birth<span className="font-bold text-red-500">*</span></label>
                                     <div className="relative">
                                         <input name="dateOfBirth" value={formData.dateOfBirth} onChange={handleChange} className="w-full rounded-lg border border-primary/20 bg-background-light/50 dark:bg-background-dark/50 h-12 px-4 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all" required type="date" />
                                     </div>
                                 </div>
 
                                 <div className="flex flex-col">
-                                    <label className="block mb-2 text-sm font-semibold text-slate-700 dark:text-slate-300">Aadhar Number*</label>
+                                    <label className="block mb-2 text-sm font-semibold text-slate-700 dark:text-slate-300">Aadhar Number<span className="font-bold text-red-500">*</span></label>
                                     <input name="aadharNumber" value={formData.aadharNumber} onChange={handleChange} className="w-full rounded-lg border border-primary/20 bg-background-light/50 dark:bg-background-dark/50 h-12 px-4 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all" placeholder="12-digit Aadhar number" required type="text" pattern="\d{12}" title="12-digit Aadhar number" />
                                 </div>
 
                                 <div className="md:col-span-2">
-                                    <label className="block mb-2 text-sm font-semibold text-slate-700 dark:text-slate-300">Student's Photo (Studio photo taken within 6 month)*</label>
+                                    <label className="block mb-2 text-sm font-semibold text-slate-700 dark:text-slate-300">Student's Photo (Studio photo taken within 6 month)<span className="font-bold text-red-500">*</span></label>
                                     <label className="block border-2 border-dashed border-primary/30 rounded-xl p-8 text-center bg-primary/5 hover:bg-primary/10 transition-colors cursor-pointer group">
                                         <span className="material-symbols-outlined text-4xl text-primary/60 group-hover:text-primary mb-2">add_a_photo</span>
                                         <p className="text-sm text-slate-600 dark:text-slate-400">
@@ -267,17 +273,17 @@ export default function AdmissionApplyPage() {
                                 </div>
 
                                 <div className="flex flex-col">
-                                    <label className="block mb-2 text-sm font-semibold text-slate-700 dark:text-slate-300">Name of Father*</label>
+                                    <label className="block mb-2 text-sm font-semibold text-slate-700 dark:text-slate-300">Name of Father<span className="font-bold text-red-500">*</span></label>
                                     <input name="fatherName" value={formData.fatherName} onChange={handleChange} className="w-full rounded-lg border border-primary/20 bg-background-light/50 dark:bg-background-dark/50 h-12 px-4 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all" placeholder="Enter father's name" required type="text" />
                                 </div>
 
                                 <div className="flex flex-col">
-                                    <label className="block mb-2 text-sm font-semibold text-slate-700 dark:text-slate-300">Place*</label>
+                                    <label className="block mb-2 text-sm font-semibold text-slate-700 dark:text-slate-300">Place<span className="font-bold text-red-500">*</span></label>
                                     <input name="place" value={formData.place} onChange={handleChange} className="w-full rounded-lg border border-primary/20 bg-background-light/50 dark:bg-background-dark/50 h-12 px-4 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all" placeholder="Enter locality/village" required type="text" />
                                 </div>
 
                                 <div className="flex flex-col">
-                                    <label className="block mb-2 text-sm font-semibold text-slate-700 dark:text-slate-300">State*</label>
+                                    <label className="block mb-2 text-sm font-semibold text-slate-700 dark:text-slate-300">State<span className="font-bold text-red-500">*</span></label>
                                     <select name="state" value={formData.state} onChange={handleChange} className="w-full rounded-lg border border-primary/20 bg-background-light/50 dark:bg-background-dark/50 h-12 px-4 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all appearance-none bg-transparent" required>
                                         <option value="">Select State</option>
                                         {Object.keys(statesDistrictsData).sort().map((state) => (
@@ -286,7 +292,7 @@ export default function AdmissionApplyPage() {
                                     </select>
                                 </div>
                                 <div className="flex flex-col">
-                                    <label className="block mb-2 text-sm font-semibold text-slate-700 dark:text-slate-300">District*</label>
+                                    <label className="block mb-2 text-sm font-semibold text-slate-700 dark:text-slate-300">District<span className="font-bold text-red-500">*</span></label>
                                     <select name="district" value={formData.district} onChange={handleChange} className="w-full rounded-lg border border-primary/20 bg-background-light/50 dark:bg-background-dark/50 h-12 px-4 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all appearance-none bg-transparent" required disabled={!formData.state}>
                                         <option value="">Select District</option>
                                         {formData.state && (statesDistrictsData as any)[formData.state]?.sort().map((district: string) => (
@@ -296,12 +302,12 @@ export default function AdmissionApplyPage() {
                                 </div>
 
                                 <div className="flex flex-col">
-                                    <label className="block mb-2 text-sm font-semibold text-slate-700 dark:text-slate-300">PIN*</label>
+                                    <label className="block mb-2 text-sm font-semibold text-slate-700 dark:text-slate-300">PIN<span className="font-bold text-red-500">*</span></label>
                                     <input name="pin" value={formData.pin} onChange={handleChange} className="w-full rounded-lg border border-primary/20 bg-background-light/50 dark:bg-background-dark/50 h-12 px-4 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all" placeholder="6-digit PIN" required type="text" pattern="\d{6}" title="6-digit PIN" />
                                 </div>
 
                                 <div className="flex flex-col">
-                                    <label className="block mb-2 text-sm font-semibold text-slate-700 dark:text-slate-300">Mobile Number*</label>
+                                    <label className="block mb-2 text-sm font-semibold text-slate-700 dark:text-slate-300">Mobile Number<span className="font-bold text-red-500">*</span></label>
                                     <div className="relative">
                                         <span className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 font-medium">+91</span>
                                         <input name="mobileNumber" value={formData.mobileNumber} onChange={handleChange} className="w-full rounded-lg border border-primary/20 bg-background-light/50 dark:bg-background-dark/50 h-12 pl-14 pr-4 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all" placeholder="Phone number" required type="tel" />
@@ -309,7 +315,7 @@ export default function AdmissionApplyPage() {
                                 </div>
 
                                 <div className="flex flex-col">
-                                    <label className="block mb-2 text-sm font-semibold text-slate-700 dark:text-slate-300">WhatsApp Number*</label>
+                                    <label className="block mb-2 text-sm font-semibold text-slate-700 dark:text-slate-300">WhatsApp Number<span className="font-bold text-red-500">*</span></label>
                                     <div className="relative">
                                         <span className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 font-medium">+91</span>
                                         <input name="whatsappNumber" value={formData.whatsappNumber} onChange={handleChange} className="w-full rounded-lg border border-primary/20 bg-background-light/50 dark:bg-background-dark/50 h-12 pl-14 pr-4 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all" placeholder="WhatsApp number" required type="tel" />
@@ -317,7 +323,7 @@ export default function AdmissionApplyPage() {
                                 </div>
 
                                 <div className="flex flex-col">
-                                    <label className="block mb-2 text-sm font-semibold text-slate-700 dark:text-slate-300">Department*</label>
+                                    <label className="block mb-2 text-sm font-semibold text-slate-700 dark:text-slate-300">Department<span className="font-bold text-red-500">*</span></label>
                                     <select name="department" value={formData.department} onChange={handleChange} className="w-full rounded-lg border border-primary/20 bg-background-light/50 dark:bg-background-dark/50 h-12 px-4 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all appearance-none bg-transparent" required>
                                         <option value="">Select Department</option>
                                         <option value="Science Academy">Science Academy</option>
