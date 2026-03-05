@@ -57,7 +57,7 @@ export default function StudentDownloads() {
     const handleDownloadPDF = async (ref: React.RefObject<HTMLDivElement>, filename: string) => {
         if (!ref.current) return;
         try {
-            const html2canvas = (await import('html2canvas')).default;
+            const html2canvas = (await import('html2canvas-pro')).default;
             const canvas = await html2canvas(ref.current);
             const imgData = canvas.toDataURL('image/png');
             const { jsPDF } = await import('jspdf');

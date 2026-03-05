@@ -349,7 +349,7 @@ export default function AdminPage() {
                                             btn.disabled = true;
                                             btn.textContent = 'Generating...';
                                             try {
-                                                const html2canvas = (await import('html2canvas')).default;
+                                                const html2canvas = (await import('html2canvas-pro')).default;
                                                 const { jsPDF } = await import('jspdf');
                                                 const element = document.getElementById('admissions-table-container');
                                                 if (!element) throw new Error('Table not found');
