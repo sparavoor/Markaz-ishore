@@ -1,0 +1,81 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+// Single-row table for flexible site content sections (hero, about, philosophy, etc.)
+model SiteContent {
+  id        String   @id @default(cuid())
+  section   String   @unique // e.g. "home_hero", "home_about", "about", "principal", "markaz", "contact", etc.
+  data      Json     // Flexible JSON blob for that section
+  updatedAt DateTime @updatedAt
+
+  @@map("site_content")
+}
+
+// Structured admission applications
+model Admission {
+  id              String   @id @default(uuid())
+  admissionNumber String   @unique @map("admission_number")
+  studentName     String   @map("student_name")
+  fatherName      String?  @map("father_name")
+  motherName      String?  @map("mother_name")
+  mobileNumber    String   @map("mobile_number")
+  dateOfBirth     String   @map("date_of_birth")
+  gender          String?
+  email           String?
+  state           String?
+  district        String?
+  address         String?
+  lastInstitution String?  @map("last_institution")
+  department      String?
+  status          String   @default("Pending")
+  photoPath       String?  @map("photo_path")
+  remarks         String?
+  extraData       Json?    @map("extra_data") // catch-all for any extra fields
+  createdAt       DateTime @default(now()) @map("created_at")
+  updatedAt       DateTime @updatedAt @map("updated_at")
+
+  @@map("admissions")
+}
+
+// News items
+model NewsItem {
+  id        String   @id @default(uuid())
+  title     String
+  date      String
+  img       String?
+  content   String?  @db.Text
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@map("news_items")
+}
+
+// Gallery images
+model GalleryImage {
+  id        String   @id @default(uuid())
+  url       String
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@map("gallery_images")
+}
+
+// Alumni profiles
+model Alumni {
+  id        String   @id @default(uuid())
+  name      String
+  batch     String
+  role      String?
+  img       String?
+  quote     String?  @db.Text
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@map("alumni")
+}

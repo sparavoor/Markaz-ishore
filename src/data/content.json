@@ -1,0 +1,218 @@
+{
+  "home": {
+    "hero": {
+      "title": "Empowering Knowledge with Values",
+      "description": "A center of excellence dedicated to nurturing intellectual growth, moral values, and leadership for future generations.",
+      "ctaPrimary": "Apply for Admission",
+      "ctaSecondary": "Explore Programs",
+      "image": "https://lh3.googleusercontent.com/aida-public/AB6AXuDZRjNJp5-QN5QEcEJM7Fq9OWW3oLfyn0yullO_0jcsKGOXIoIm7fjsVP0T57x4EjUtsroZzZIKtlg7P8ESjlchinugvCKau0acTsgryS0vnxiNhFMweXwBhNzz3Q6MyX2izKT26ETpB7UOYEd1YLiRYpTNhT0qNbyq4L2VqVrz9_U_dcOgtd_QW1wLH32J1nAwQvqAvJEwmAcofAQOe4CBWm-1KKFglAnVWy6g2aIk2MismWhegZ8FkbJForuon7feuOAMgg67j0Uq"
+    },
+    "about": {
+      "title": "Nurturing Potential with Academic Excellence & Moral Integrity",
+      "description": "Ishore Educational Institution is committed to delivering quality education that blends academic excellence with ethical values. Founded on the principles of holistic development, we believe that true education goes beyond books and encompasses character building, leadership, and service to society.",
+      "stats": [
+        {
+          "label": "Ethical Values",
+          "value": "Rooted in moral excellence"
+        },
+        {
+          "label": "Global Reach",
+          "value": "Connecting with world"
+        },
+        {
+          "label": "ALUMNI WORLDWIDE",
+          "value": "5000+"
+        },
+        {
+          "label": "YEARS EXCELLENCE",
+          "value": "25+"
+        }
+      ]
+    },
+    "philosophy": {
+      "title": "Our Core Philosophy",
+      "vision": "To be a premier global center for excellence in education and values, creating an environment where intellectual curiosity thrives alongside moral integrity and spiritual awareness.",
+      "mission": "To empower students through quality education, leadership training, and moral development, preparing them to meet the challenges of the modern world while remaining rooted in Islamic ethical traditions."
+    },
+    "programmes": {
+      "title": "Our Programmes",
+      "subtitle": "Academic Offerings",
+      "items": [
+        {
+          "icon": "menu_book",
+          "title": "Foundation Courses",
+          "desc": "Early childhood and elementary education focused on fundamental literacy and moral base."
+        },
+        {
+          "icon": "history_edu",
+          "title": "Higher Secondary",
+          "desc": "Advanced academic streams in Science, Commerce, and Humanities with career guidance."
+        },
+        {
+          "icon": "library_books",
+          "title": "Islamic Studies",
+          "desc": "Deep theological understanding and spiritual development programs for all ages."
+        },
+        {
+          "icon": "schoolschool",
+          "title": "New ProgramNew Program",
+          "desc": "Program description goes hereProgram description goes here."
+        },
+        {
+          "icon": "Book",
+          "title": "New Program",
+          "desc": "Program description goes here"
+        }
+      ]
+    },
+    "collaborators": [
+      {
+        "name": "Markaz",
+        "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkL7Fayp8yVUTsBUJLRcABttCnNwXCLAQyBg&s"
+      },
+      {
+        "name": "EduGroup",
+        "img": "https://upload.wikimedia.org/wikipedia/commons/d/d9/Markaz_knowledge_city.png"
+      },
+      {
+        "name": "Heritage",
+        "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/University_of_Oxford.svg/3840px-University_of_Oxford.svg.png"
+      },
+      {
+        "name": "Global Academy",
+        "img": "https://gad.kerala.gov.in/sites/default/files/inline-images/kerala%20final%20emblem_0.jpg"
+      }
+    ],
+    "news": [
+      {
+        "id": "49355fb3-1845-4dba-8918-8f7456eed240",
+        "date": "March 04, 2026",
+        "title": "New Event Title",
+        "img": "https://markaz.in/admin/assets/uploads/news-featured-16.jpg",
+        "content": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.\n\n"
+      },
+      {
+        "id": "ef7a326f-f503-4414-b009-480f9af2e171",
+        "date": "March 04, 2026",
+        "title": "New Event Title 2",
+        "img": "https://markazschool.com/img/slider/1-2.jpg",
+        "content": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).\n\n"
+      },
+      {
+        "id": "6eb713fe-d323-4237-8801-7154dce9ae04",
+        "date": "March 05, 2026",
+        "title": "New Event Title 3",
+        "img": "https://markaz.in/admin/assets/uploads/news-featured-54.jpg",
+        "content": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.\n"
+      },
+      {
+        "id": "a8348bad-bd51-435e-89d4-2b42c9de9ab5",
+        "date": "March 05, 2026",
+        "title": "New Event Title 4",
+        "img": "https://markaz.in/admin/assets/uploads/news-featured-54.jpg",
+        "content": "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of \"de Finibus Bonorum et Malorum\" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, \"Lorem ipsum dolor sit amet..\", comes from a line in section 1.10.32.\n\n"
+      }
+    ],
+    "testimonial": {
+      "quote": "Ishore provided not just a degree, but a direction for my life. The blend of modern education and spiritual values is what makes this place unique.",
+      "author": "Ahmed Hassan",
+      "role": "Software Engineer, Batch of 2018",
+      "image": "https://lh3.googleusercontent.com/aida-public/AB6AXuDbEhw-k1bA9tjBwU65ZFKkfngeLmRlzEOXhLs0c75KmbmJecovGk7da_N0QbLWbYdz_cbLhutDwOQtOm9TL0Gt_OxBe_OMJx6mErC-Cwqaf-KXHITcekTgFNQwKJgLcZGJYHFlhTqsOw4Mb7RF52JKB3Yz5Hu5S0-jPiyGIOU8xpGj_9-H-1yZz_N6qU_-IsnVD6ui0IzUrptWgcwTem9kp95YLQhWw5aKLKSedLK2YK7frhEI_sKJBAMvVFCrUkW0DigPBkZd7Uis"
+    },
+    "gallery": [
+      {
+        "url": "https://www.markazcollege.in/images/h-about.jpg"
+      },
+      {
+        "url": "https://www.markazcollege.in/images/h-about.jpg"
+      },
+      {
+        "url": "https://www.markazcollege.in/images/h-about.jpg"
+      },
+      {
+        "url": "https://markazschool.com/img/slider/1-2.jpg"
+      },
+      {
+        "url": "https://markazschool.com/img/slider/1-2.jpg"
+      },
+      {
+        "url": "https://markazschool.com/img/slider/1-2.jpg"
+      },
+      {
+        "url": "https://markazschool.com/img/slider/1-2.jpg"
+      },
+      {
+        "url": "https://markazschool.com/img/slider/1-2.jpg"
+      },
+      {
+        "url": "https://markazschool.com/img/slider/1-2.jpg"
+      },
+      {
+        "url": "https://markaz.in/admin/assets/uploads/news-featured-54.jpg"
+      },
+      {
+        "url": "https://markaz.in/admin/assets/uploads/news-featured-54.jpg"
+      }
+    ]
+  },
+  "about": {
+    "hero": {
+      "title": "About Ishore",
+      "description": "Rooted in values, committed to excellence."
+    },
+    "content": "Ishore Educational Institution stands at the forefront of holistic education, where academic rigor meets ethical spiritual growth. Since our inception, we have been dedicated to nurturing students who are not only professionally competent but also morally upright members of society."
+  },
+  "alumni": [
+    {
+      "name": "New Alumni",
+      "batch": "2024",
+      "role": "Graduate",
+      "img": "https://scontent.fccj3-1.fna.fbcdn.net/v/t39.30808-6/448961083_122105884322372241_3877866910408813484_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=1d70fc&_nc_ohc=Gy4U9olmpyEQ7kNvwHvTQrI&_nc_oc=AdnYMcbks9sZ-QQUcOYGg8d_XTTd1ODx8FzgqkwhEPmNMtkRmxr_3tSXSV-5tsgLC-m5dKuk9ATLqtLtVrwSEFF7&_nc_zt=23&_nc_ht=scontent.fccj3-1.fna&_nc_gid=nM6EbMNCJsohvstxpfP34A&_nc_ss=8&oh=00_AfzFGlIerXuvH8oVVe_wtL6EMEbuVjZUphwaWMAezmdkHQ&oe=69AF10D8",
+      "quote": ""
+    }
+  ],
+  "contact": {
+    "phone": "+91 9072 500 438",
+    "email": "ishore.mrv@markaz.in",
+    "address": "Ishore Campus, Karanthoor\nKunnamangalam, Kozhikode",
+    "socials": {
+      "whatsapp": "+91 9495 852 505",
+      "facebook": "https://www.facebook.com/profile.php?id=61561239910260",
+      "instagram": "https://www.instagram.com/ishore_markaz/"
+    }
+  },
+  "studentPortal": {
+    "announcements": [
+      {
+        "id": "1772691407209",
+        "title": "New Announcement",
+        "date": "2026-03-05",
+        "desc": "Announcement details here."
+      }
+    ],
+    "handouts": [],
+    "downloads": [
+      {
+        "id": "1772691485201",
+        "title": "New Document",
+        "desc": "Description...",
+        "fileUrl": "https://drive.google.com/file/d/1iJrdGBXyc9Lph_1-bh7MTtdaPC7TJyBj/view?usp=sharing",
+        "type": "document"
+      }
+    ]
+  },
+  "principal": {
+    "name": "Adv. Rashid PT",
+    "designation": "Principal & Director",
+    "image": "https://scontent.fccj3-1.fna.fbcdn.net/v/t39.30808-6/476158734_3074128589394793_8112636648573873428_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=53a332&_nc_ohc=E1xUIrgV0gkQ7kNvwHkHCAA&_nc_oc=AdkcJId2RCPk_XJGqKlde2mKXdzPBoPO7h9VWdmRRYKXWD01gitlPPMiOViGQ6vVGo2BGuTVImq7EVPaoMb-CX-3&_nc_zt=23&_nc_ht=scontent.fccj3-1.fna&_nc_gid=kxt_qZ0oWvENcuia7ZjtFw&_nc_ss=8&oh=00_AfyLY-zhijkl1gRmRACmDdVF5FW10QT4Hes6NPqbSUeWDg&oe=69AEFB85",
+    "message": "Education is not merely the acquisition of knowledge but the development of character, discipline, and vision. At Ishore, we strive to create an environment where students grow academically, spiritually, and socially.",
+    "mission": "Our dedicated faculty members work tirelessly to ensure that every student receives the guidance and support needed to reach their full potential.",
+    "vision": "We believe in nurturing future leaders who will contribute positively to society and drive innovation in their chosen fields."
+  },
+  "markaz": {
+    "title": "History of Markazu Saqafathi Sunniyya",
+    "history": "Markazu Saqafathi Sunniyya, also known as Markaz, is a premier Islamic institution in Kerala, India. Founded in 1978 by Sheikh Aboobacker Ahmed, it has grown into a vast educational and social complex, catering to thousands of students across multiple disciplines. Markaz is renowned for its commitment to blending traditional Islamic sciences with modern academic excellence.",
+    "content": "Markazu Saqafathi Sunniyya is the leading academic and charitable organization in India. Established in the year 1978 under the Societies Registration Act XXI of 1860, Markaz is running different educational and charitable institutions spreading all over India. The governing body of the Society includes a team of reputed scholars and active social workers who are experts in their respective fields. It has been the patron of the unprivileged population and champion of constructive education with solid spiritual foundations. We impart a system of education combined with modern curriculum and moral upbringing. Here, even the ultra modern educated abides the laws of the country and is committed to guard the true faith with utmost respect to his fellow beings. Leading from its headquarters in Calicut, Kerala, Markaz has regional educational centers and divisional offices all over India, the Gulf countries, the Europe and America. Markaz operates more than 50 institutions and many sub-centers across the world including Orphanages, School of Qur’an, Colleges of Shari’a, Secondary and Higher Schools, Arts and Science Colleges, Engineering Colleges, Orphan Home Care, Vocational Training & Technical Institutes, Medical and Professional institutes, Management and Finishing Schools, Masjids, Hospitals, Hostels for Girls…etc. Currently, more than 20,000 students are direct beneficiaries and thousands of others advantage indirectly by Markaz. At Markaz significant support has been provided to orphans, destitute and the poor students. “Markaz Homecare Project”, by which now more than 1500 orphans are taken care at the comfort of their homes, is receiving application in large numbers. “Takaful” and “Markaz Cares” are the supportive schemes of Markaz for the deserving student and children. Inspired by the teachings of Holy Qur’an and Prophet Muhammed (s) Markaz provides complete free education and day today expenses of more than 5,000 students including orphans, Sharia’a & Qur’an students, Kashmir boys…etc. Apart from educational empowerment, Markaz concentrates on medical missions, career guidance, sweet water projects in suburban areas, community marriages, and a lot more humanitarian services throughout India. When the foundation stone was laid by the world renowned scholar of Holy Makkah, Dr. Sayyid Muhammed Alawi Maliki on April 18th in the year 1978, people of Kerala including the educationalists, scholars and students witnessed the dawn of a new age. Known popularly as Markazu Saqafathi Sunniyya or simply Markaz, it is home to thousands of destitute children and a source of relief and comfort for numerous families, this vast non-governmental institution of charity has imprinted a slot for itself as the guiding light for a generation deep-rooted in a righteous way of life. Empowered by faculties that have received unequivocal acclaim from universities across the globe, Markaz has built an international reputation for its invaluable contribution to Islamic education. Markaz is one the few institutions to get the coveted recognitions of Al-Azhar University of Cairo, Egypt, Aligarh Muslim University (AMU), Aligarh, Jamia Millia, Hamdard, New Delhi, and MANUU…etc. Students belonging to different states of India such as Delhi, Hariyana, Uttar Pradesh, Bihar, J&K, Kerala, Lakshadweep, North East States…etc. and pupils from abroad such as Canada, USA, UK, Singapore…etc. are also accommodated and educationally fed in Markaz institutions. Markaz is the synonym for charity and educational service in India and abroad.",
+    "programs": []
+  }
+}
