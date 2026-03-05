@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
 import Sidebar from "../Sidebar";
 
@@ -51,6 +51,26 @@ export default function StudentDownloads() {
     if (!student) return null;
 
     const isApproved = student.status === "Approved";
+    const idCardRef = useRef<HTMLDivElement>(null);
+    const admissionRef = useRef<HTMLDivElement>(null);
+
+    const handleDownloadPDF = async (ref: React.RefObject<HTMLDivElement>, filename: string) => {
+        if (!ref.current) return;
+        try {
+            const html2canvas = (await import('html2canvas')).default;
+            const canvas = await html2canvas(ref.current);
+            const imgData = canvas.toDataURL('image/png');
+            const { jsPDF } = await import('jspdf');
+            const pdf = new jsPDF();
+            const pdfWidth = pdf.internal.pageSize.getWidth();
+            const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
+            pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
+            pdf.save(filename);
+        } catch (error) {
+            console.error('PDF generation error:', error);
+            alert('Failed to generate PDF.');
+        }
+    };
 
     return (
         <div className="flex h-screen overflow-hidden bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display">
@@ -91,7 +111,7 @@ export default function StudentDownloads() {
                         ))}
 
                         {/* ID Card */}
-                        <div className={`p-6 rounded-2xl border flex flex-col justify-between group transition-all ${isApproved ? 'bg-white dark:bg-slate-900 border-primary/10 hover:shadow-lg' : 'bg-slate-50 dark:bg-slate-900/50 border-slate-200 dark:border-slate-800 opacity-70'}`}>
+                        <div ref={idCardRef} className={`p-6 rounded-2xl border flex flex-col justify-between group transition-all ${isApproved ? 'bg-white dark:bg-slate-900 border-primary/10 hover:shadow-lg' : 'bg-slate-50 dark:bg-slate-900/50 border-slate-200 dark:border-slate-800 opacity-70'}`}>
                             <div className="flex items-start gap-4 mb-8">
                                 <div className={`w-12 h-12 rounded-xl flex items-center justify-center text-white shrink-0 ${isApproved ? 'bg-accent' : 'bg-slate-400'}`}>
                                     <span className="material-symbols-outlined">badge</span>
@@ -113,7 +133,7 @@ export default function StudentDownloads() {
                         </div>
 
                         {/* Admission Letter */}
-                        <div className={`p-6 rounded-2xl border flex flex-col justify-between group transition-all ${isApproved ? 'bg-white dark:bg-slate-900 border-primary/10 hover:shadow-lg' : 'bg-slate-50 dark:bg-slate-900/50 border-slate-200 dark:border-slate-800 opacity-70'}`}>
+                        <div ref={admissionRef} className={`p-6 rounded-2xl border flex flex-col justify-between group transition-all ${isApproved ? 'bg-white dark:bg-slate-900 border-primary/10 hover:shadow-lg' : 'bg-slate-50 dark:bg-slate-900/50 border-slate-200 dark:border-slate-800 opacity-70'}`}>
                             <div className="flex items-start gap-4 mb-8">
                                 <div className={`w-12 h-12 rounded-xl flex items-center justify-center text-white shrink-0 ${isApproved ? 'bg-primary' : 'bg-slate-400'}`}>
                                     <span className="material-symbols-outlined">description</span>

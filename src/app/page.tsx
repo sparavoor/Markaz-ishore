@@ -69,7 +69,7 @@ export default function Home() {
                 {home.hero.description}
               </p>
               <div className="flex flex-wrap gap-4">
-                <Link href="/admission" className="px-8 py-4 bg-accent text-primary font-bold rounded-xl flex items-center gap-2 hover:scale-105 transition-transform shadow-lg shadow-accent/20">
+                <Link href="/admission" className="px-8 py-4 bg-white text-primary font-bold rounded-xl flex items-center gap-2 hover:scale-105 transition-transform shadow-lg shadow-accent/20">
                   {home.hero.ctaPrimary}
                   <span className="material-symbols-outlined">arrow_forward</span>
                 </Link>

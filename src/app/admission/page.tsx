@@ -53,7 +53,7 @@ export default function AdmissionPage() {
                                     <h3 className="text-xl font-bold mb-1">Ready to start?</h3>
                                     <p className="text-primary-foreground/80 text-sm">Apply now through our online admission portal.</p>
                                 </div>
-                                <a href="/admission/apply" className="px-8 py-3 bg-accent text-primary font-bold rounded-xl hover:scale-105 transition-transform whitespace-nowrap block text-center">
+                                <a href="/admission/apply" className="px-8 py-3 bg-white text-primary font-bold rounded-xl hover:scale-105 transition-transform whitespace-nowrap block text-center">
                                     Apply Online
                                 </a>
                             </div>
