@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { prisma } from "@/lib/prisma";
+import { findStudentByCredentials } from "@/lib/persistence";
 import { cookies } from "next/headers";
 
 export async function POST(request: Request) {
@@ -10,13 +10,7 @@ export async function POST(request: Request) {
             return NextResponse.json({ error: "Mobile number and Date of Birth are required" }, { status: 400 });
         }
 
-        // Find the student matching the credentials
-        const student = await prisma.admission.findFirst({
-            where: {
-                mobileNumber,
-                dateOfBirth,
-            },
-        });
+        const student = await findStudentByCredentials(mobileNumber, dateOfBirth);
 
         if (!student) {
             return NextResponse.json({ error: "Invalid credentials. Need help? Contact the administration." }, { status: 401 });
@@ -31,6 +25,10 @@ export async function POST(request: Request) {
             path: "/",
             maxAge: 60 * 60 * 24 * 7, // 1 week
         });
+
+        // Also set these for frontend use if needed
+        cookieStore.set("student_id", student.id, { path: "/", maxAge: 60 * 60 * 24 * 7 });
+        cookieStore.set("student_name", student.studentName, { path: "/", maxAge: 60 * 60 * 24 * 7 });
 
         return NextResponse.json({
             success: true,
@@ -50,9 +48,12 @@ export async function DELETE() {
     try {
         const cookieStore = await cookies();
         cookieStore.delete("studentToken");
+        cookieStore.delete("student_id");
+        cookieStore.delete("student_name");
         return NextResponse.json({ success: true, message: "Logged out successfully" });
     } catch (error) {
         console.error("Logout Error:", error);
         return NextResponse.json({ error: "Failed to logout" }, { status: 500 });
     }
 }
+

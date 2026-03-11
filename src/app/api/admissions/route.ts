@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { prisma } from "@/lib/prisma";
+import { getAllAdmissions, createAdmission, updateAdmissionStatus, deleteAdmission } from "@/lib/persistence";
 import fs from "fs/promises";
 import path from "path";
 
@@ -7,9 +7,7 @@ export const dynamic = "force-dynamic";
 
 export async function GET() {
     try {
-        const admissions = await prisma.admission.findMany({
-            orderBy: { createdAt: "desc" },
-        });
+        const admissions = await getAllAdmissions();
         return NextResponse.json(admissions);
     } catch (error) {
         console.error("Failed to read admissions:", error);
@@ -45,27 +43,31 @@ export async function POST(request: Request) {
             }
         }
 
-        const admission = await prisma.admission.create({
-            data: {
-                admissionNumber,
-                studentName: newAdmission.studentName || "",
-                fatherName: newAdmission.fatherName || null,
-                motherName: newAdmission.motherName || null,
-                mobileNumber: newAdmission.mobileNumber || "",
-                dateOfBirth: newAdmission.dateOfBirth || "",
-                gender: newAdmission.gender || null,
-                email: newAdmission.email || null,
-                state: newAdmission.state || null,
-                district: newAdmission.district || null,
-                address: newAdmission.address || null,
-                lastInstitution: newAdmission.lastInstitution || null,
-                department: newAdmission.department || null,
-                status: "Pending",
-                photoPath,
-            },
-        });
+        const admissionData = {
+            admissionNumber,
+            studentName: newAdmission.studentName || "",
+            fatherName: newAdmission.fatherName || null,
+            motherName: newAdmission.motherName || null,
+            mobileNumber: newAdmission.mobileNumber || "",
+            dateOfBirth: newAdmission.dateOfBirth || "",
+            gender: newAdmission.gender || null,
+            email: newAdmission.email || null,
+            state: newAdmission.state || null,
+            district: newAdmission.district || null,
+            address: newAdmission.fullAddress || newAdmission.address || null,
+            lastInstitution: newAdmission.lastInstitution || null,
+            department: newAdmission.department || null,
+            status: "Pending",
+            photoPath,
+            extraData: {
+                aadharNumber: newAdmission.aadharNumber || "",
+                whatsappNumber: newAdmission.whatsappNumber || "",
+            }
+        };
 
-        return NextResponse.json({ success: true, id: admission.id, admissionNumber: admission.admissionNumber, data: admission });
+        const admission = await createAdmission(admissionData);
+
+        return NextResponse.json({ success: true, id: (admission as any).id, admissionNumber: (admission as any).admissionNumber, data: admission });
     } catch (error) {
         console.error("Failed to handle admission application:", error);
         return NextResponse.json({ error: "Failed to submit application" }, { status: 500 });
@@ -80,12 +82,9 @@ export async function PATCH(request: Request) {
             return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
         }
 
-        const admission = await prisma.admission.update({
-            where: { id },
-            data: { status },
-        });
+        await updateAdmissionStatus(id, status);
 
-        return NextResponse.json({ success: true, data: admission });
+        return NextResponse.json({ success: true });
     } catch (error) {
         console.error("Failed to update admission status:", error);
         return NextResponse.json({ error: "Failed to update admission" }, { status: 500 });
@@ -101,12 +100,12 @@ export async function DELETE(request: Request) {
             return NextResponse.json({ error: "Missing ID" }, { status: 400 });
         }
 
-        await prisma.admission.delete({ where: { id } });
+        await deleteAdmission(id);
 
-        const count = await prisma.admission.count();
-        return NextResponse.json({ success: true, count });
+        return NextResponse.json({ success: true });
     } catch (error) {
         console.error("Delete API Error:", error);
         return NextResponse.json({ error: "Failed to delete" }, { status: 500 });
     }
 }
+

@@ -89,7 +89,9 @@ export default function StudentProfile() {
                             </div>
                             <div>
                                 <p className="text-xs uppercase text-slate-400 font-bold tracking-wider mb-1">Aadhar Number</p>
-                                <p className="text-lg font-semibold text-slate-800 dark:text-slate-200 font-mono tracking-widest">{student.aadharNumber || "Not Provided"}</p>
+                                <p className="text-lg font-semibold text-slate-800 dark:text-slate-200 font-mono tracking-widest">
+                                    {(student.extraData as any)?.aadharNumber || student.aadharNumber || "Not Provided"}
+                                </p>
                             </div>
                             <div>
                                 <p className="text-xs uppercase text-slate-400 font-bold tracking-wider mb-1">Father's Name</p>
@@ -112,15 +114,14 @@ export default function StudentProfile() {
                             <div>
                                 <p className="text-xs uppercase text-slate-400 font-bold tracking-wider mb-1">WhatsApp Number</p>
                                 <p className="text-lg font-semibold text-slate-800 dark:text-slate-200 flex items-center gap-2">
-                                    {student.whatsappNumber}
+                                    {(student.extraData as any)?.whatsappNumber || student.whatsappNumber || student.mobileNumber}
                                     <span className="material-symbols-outlined text-green-500 text-sm">check_circle</span>
                                 </p>
                             </div>
                             <div className="md:col-span-2">
                                 <p className="text-xs uppercase text-slate-400 font-bold tracking-wider mb-1">Permanent Address</p>
-                                <p className="text-lg font-semibold text-slate-800 dark:text-slate-200 leading-relaxed">
-                                    {student.place}, {student.district}<br />
-                                    {student.state} - {student.pin}
+                                <p className="text-lg font-semibold text-slate-800 dark:text-slate-200 leading-relaxed whitespace-pre-wrap">
+                                    {student.address || `${student.place}, ${student.district}\n${student.state} - ${student.pin}`}
                                 </p>
                             </div>
                         </div>

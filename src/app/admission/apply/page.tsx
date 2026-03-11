@@ -15,6 +15,7 @@ export default function AdmissionApplyPage() {
         dateOfBirth: "",
         aadharNumber: "",
         fatherName: "",
+        fullAddress: "",
         place: "",
         state: "",
         district: "",
@@ -27,7 +28,7 @@ export default function AdmissionApplyPage() {
     const [photoName, setPhotoName] = useState("");
     const [photoBase64, setPhotoBase64] = useState("");
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
         const { name, value } = e.target;
         if (name === "state") {
             setFormData({ ...formData, state: value, district: "" });
@@ -197,7 +198,7 @@ export default function AdmissionApplyPage() {
                                     </div>
                                     <div className="space-y-1">
                                         <p className="text-xs font-bold text-slate-400 uppercase tracking-wider">Aadhar Number</p>
-                                        <p className="font-semibold text-slate-700">{submittedData.aadharNumber}</p>
+                                        <p className="font-semibold text-slate-700">{(submittedData.extraData as any)?.aadharNumber || submittedData.aadharNumber}</p>
                                     </div>
 
                                     <div className="space-y-1">
@@ -211,7 +212,7 @@ export default function AdmissionApplyPage() {
 
                                     <div className="md:col-span-2 space-y-1 pt-4 border-t border-slate-100">
                                         <p className="text-xs font-bold text-slate-400 uppercase tracking-wider">Address</p>
-                                        <p className="font-semibold text-slate-700">{submittedData.place}, {submittedData.district}, {submittedData.state} - {submittedData.pin}</p>
+                                        <p className="font-semibold text-slate-700 whitespace-pre-wrap">{submittedData.address}</p>
                                     </div>
                                 </div>
 
@@ -278,8 +279,13 @@ export default function AdmissionApplyPage() {
                                 </div>
 
                                 <div className="flex flex-col">
-                                    <label className="block mb-2 text-sm font-semibold text-slate-700 dark:text-slate-300">Place<span className="font-bold text-red-500">*</span></label>
+                                    <label className="block mb-2 text-sm font-semibold text-slate-700 dark:text-slate-300">Place (Locality/Village)<span className="font-bold text-red-500">*</span></label>
                                     <input name="place" value={formData.place} onChange={handleChange} className="w-full rounded-lg border border-primary/20 bg-background-light/50 dark:bg-background-dark/50 h-12 px-4 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all" placeholder="Enter locality/village" required type="text" />
+                                </div>
+
+                                <div className="md:col-span-2">
+                                    <label className="block mb-2 text-sm font-semibold text-slate-700 dark:text-slate-300">Full Address (House Name, Street, etc.)<span className="font-bold text-red-500">*</span></label>
+                                    <textarea name="fullAddress" value={formData.fullAddress} onChange={handleChange} className="w-full rounded-lg border border-primary/20 bg-background-light/50 dark:bg-background-dark/50 p-4 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all min-h-[100px]" placeholder="Enter full permanent address" required />
                                 </div>
 
                                 <div className="flex flex-col">

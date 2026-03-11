@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { prisma } from "@/lib/prisma";
+import { findStudentByCredentials } from "@/lib/persistence";
 
 export async function POST(req: Request) {
     try {
@@ -16,12 +16,7 @@ export async function POST(req: Request) {
             formattedDob = `${parts[2]}-${parts[1].padStart(2, "0")}-${parts[0].padStart(2, "0")}`;
         }
 
-        const student = await prisma.admission.findFirst({
-            where: {
-                mobileNumber,
-                dateOfBirth: formattedDob,
-            },
-        });
+        const student = await findStudentByCredentials(mobileNumber, formattedDob);
 
         if (student) {
             const response = NextResponse.json({
@@ -54,3 +49,4 @@ export async function POST(req: Request) {
         return NextResponse.json({ success: false, message: "Internal server error" }, { status: 500 });
     }
 }
+

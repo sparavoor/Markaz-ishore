@@ -326,8 +326,8 @@ export default function AdminPage() {
                                                 );
 
                                             const csvContent = "data:text/csv;charset=utf-8,"
-                                                + ["ADMISSION ID,Student Name,Phone,Department,Date Applied,Status"]
-                                                    .concat(dataToExport.map(r => `${r.admissionNumber},${r.studentName},${r.mobileNumber},${r.department},${new Date(r.createdAt).toLocaleDateString()},${r.status || "Pending"}`))
+                                                + ["ADMISSION ID,Student Name,Aadhar Number,Phone,Address,Department,Date Applied,Status"]
+                                                    .concat(dataToExport.map(r => `${r.admissionNumber},${r.studentName},${(r.extraData as any)?.aadharNumber || 'N/A'},${r.mobileNumber},"${(r.address || '').replace(/"/g, '""')}",${r.department},${new Date(r.createdAt).toLocaleDateString()},${r.status || "Pending"}`))
                                                     .join("\n");
 
                                             const encodedUri = encodeURI(csvContent);
@@ -362,7 +362,7 @@ export default function AdminPage() {
                                                 });
 
                                                 const imgData = canvas.toDataURL('image/jpeg', 0.95);
-                                                const pdf = new jsPDF('l', 'mm', 'a4');
+                                                const pdf = new jsPDF('l', 'mm', 'a4'); // Change to landscape for wider table
                                                 const pdfWidth = pdf.internal.pageSize.getWidth();
                                                 const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
 
@@ -424,7 +424,9 @@ export default function AdminPage() {
                                                 <tr>
                                                     <th className="px-6 py-4">ADMISSION ID</th>
                                                     <th className="px-6 py-4">Student Name</th>
+                                                    <th className="px-6 py-4">Aadhar Number</th>
                                                     <th className="px-6 py-4">Phone</th>
+                                                    <th className="px-6 py-4">Address</th>
                                                     <th className="px-6 py-4">Department</th>
                                                     <th className="px-6 py-4">Date Applied</th>
                                                     <th className="px-6 py-4">Status</th>
@@ -443,7 +445,9 @@ export default function AdminPage() {
                                                         <tr key={idx} className="hover:bg-[var(--primary)]/5 transition-colors">
                                                             <td className="px-6 py-4 font-mono text-[var(--primary)] font-bold">{row.admissionNumber}</td>
                                                             <td className="px-6 py-4 font-medium dark:text-white">{row.studentName}</td>
+                                                            <td className="px-6 py-4 text-slate-500">{(row.extraData as any)?.aadharNumber || "N/A"}</td>
                                                             <td className="px-6 py-4 text-slate-500">{row.mobileNumber}</td>
+                                                            <td className="px-6 py-4 text-slate-500 max-w-[200px] truncate" title={row.address}>{row.address || "N/A"}</td>
                                                             <td className="px-6 py-4 text-slate-500">{row.department}</td>
                                                             <td className="px-6 py-4 text-slate-500">{new Date(row.createdAt).toLocaleDateString()}</td>
                                                             <td className="px-6 py-4">
@@ -1869,6 +1873,34 @@ export default function AdminPage() {
                                                             className="w-full px-3 py-2 text-sm rounded-lg border border-[var(--primary)]/10 text-slate-900 dark:text-white dark:bg-slate-800"
                                                         />
                                                     </div>
+                                                    <div className="flex items-center gap-6 pt-2">
+                                                        <label className="flex items-center gap-2 text-xs font-bold text-slate-600 dark:text-slate-400 cursor-pointer uppercase tracking-wider">
+                                                            <input
+                                                                type="checkbox"
+                                                                checked={item.isActive !== false}
+                                                                onChange={(e) => {
+                                                                    const newItems = [...content.studentPortal.downloads];
+                                                                    newItems[idx].isActive = e.target.checked;
+                                                                    setContent((prev: any) => ({ ...prev, studentPortal: { ...prev.studentPortal, downloads: newItems } }));
+                                                                }}
+                                                                className="rounded text-emerald-500 focus:ring-emerald-500 accent-emerald-500"
+                                                            />
+                                                            Active
+                                                        </label>
+                                                        <label className="flex items-center gap-2 text-xs font-bold text-slate-600 dark:text-slate-400 cursor-pointer uppercase tracking-wider">
+                                                            <input
+                                                                type="checkbox"
+                                                                checked={item.isLocked === true}
+                                                                onChange={(e) => {
+                                                                    const newItems = [...content.studentPortal.downloads];
+                                                                    newItems[idx].isLocked = e.target.checked;
+                                                                    setContent((prev: any) => ({ ...prev, studentPortal: { ...prev.studentPortal, downloads: newItems } }));
+                                                                }}
+                                                                className="rounded text-amber-500 focus:ring-amber-500 accent-amber-500"
+                                                            />
+                                                            Locked
+                                                        </label>
+                                                    </div>
                                                 </div>
                                                 <button
                                                     onClick={() => {
@@ -1884,7 +1916,7 @@ export default function AdminPage() {
                                         {/* Add Button */}
                                         <button
                                             onClick={() => {
-                                                const newItem = { id: Date.now().toString(), title: "New Document", desc: "Description...", fileUrl: "#", type: "document" };
+                                                const newItem = { id: Date.now().toString(), title: "New Document", desc: "Description...", fileUrl: "#", type: "document", isActive: true, isLocked: false };
                                                 const newItems = [...(content?.studentPortal?.downloads || []), newItem];
                                                 setContent((prev: any) => ({ ...prev, studentPortal: { ...prev.studentPortal, downloads: newItems } }));
                                             }}

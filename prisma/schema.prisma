@@ -34,6 +34,8 @@ model Admission {
   state           String?
   district        String?
   address         String?
+  aadharNumber    String?  @map("aadhar_number")
+  whatsappNumber  String?  @map("whatsapp_number")
   lastInstitution String?  @map("last_institution")
   department      String?
   status          String   @default("Pending")
