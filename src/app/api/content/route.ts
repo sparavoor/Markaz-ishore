@@ -9,14 +9,6 @@ export async function GET() {
     try {
         // Fetch all sections from the database
         const sections = await prisma.siteContent.findMany();
-
-        // If database is completely empty (unseeded), fallback to content.json
-        if (sections.length === 0) {
-            const defaultDataPath = path.join(process.cwd(), "src", "data", "content.json");
-            const fileContent = await fs.readFile(defaultDataPath, "utf8");
-            return NextResponse.json(JSON.parse(fileContent));
-        }
-
         const newsItems = await prisma.newsItem.findMany({ orderBy: { createdAt: "asc" } });
         const galleryImages = await prisma.galleryImage.findMany({ orderBy: { createdAt: "asc" } });
         const alumniList = await prisma.alumni.findMany({ orderBy: { createdAt: "asc" } });
@@ -64,8 +56,15 @@ export async function GET() {
 
         return NextResponse.json(content);
     } catch (error) {
-        console.error("Failed to read content:", error);
-        return NextResponse.json({ error: "Failed to read content" }, { status: 500 });
+        console.error("Prisma failed, falling back to JSON:", error);
+        try {
+            const defaultDataPath = path.join(process.cwd(), "src", "data", "content.json");
+            const fileContent = await fs.readFile(defaultDataPath, "utf8");
+            return NextResponse.json(JSON.parse(fileContent));
+        } catch (fsError) {
+            console.error("Critical: Failed to read even the fallback JSON:", fsError);
+            return NextResponse.json({ error: "Failed to read content" }, { status: 500 });
+        }
     }
 }
 
